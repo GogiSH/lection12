@@ -11,12 +11,15 @@ public class StudentDaoTest {
 	private static StudentDao studentDao = new StudentDaoImpl();
 	public static void main(String...strings ) {
 		try {
-		
 			HibernateUtils.beginTransaction();
 			
 			System.out.println("Test1 (findAllStudents)");
 			List<Student> allStudents = studentDao.findAllStudents();
-			if (allStudents == null) return;
+			if (allStudents.isEmpty()) {
+				System.out.println("Test1: no students selected");
+				HibernateUtils.rollbackTransaction();
+				return;
+			}
 			System.out.println("List of students:");
 			for (Student st : allStudents){
 				System.out.println(st.getStudentNo() + " | " + st.getUser().getLastName());
@@ -33,6 +36,7 @@ public class StudentDaoTest {
 			System.out.println("Test3 (getStudentByStudentNo)");
 			System.out.println("His surname:");
 			Student samestudent = studentDao.getStudentByStudentNo(student_no);
+
 			System.out.println(samestudent.getUser().getLastName());
 			
 			System.out.println("Test4 (getAverageRating)");
@@ -42,6 +46,9 @@ public class StudentDaoTest {
 
 		} catch (HibernateException e) {
 			System.out.println(e.getMessage());
+			HibernateUtils.rollbackTransaction();
+		} catch (NullPointerException exc){
+			System.out.println(exc.getMessage());
 			HibernateUtils.rollbackTransaction();
 		} finally {
 			HibernateUtils.closeSession();
