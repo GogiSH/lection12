@@ -19,15 +19,28 @@ public class SubjectDaoTest {
 			HibernateUtils.beginTransaction();
 
 			List<Subject> allSubjects = subjectDao.findAll(Subject.class);
+			System.out.println("The Subjects are:");
 			for (Subject subject : allSubjects) {
 				System.out.println(subject.getName() + " | "
 						+ subject.getDescription());
 			}
-			//wouldn't work ,till i'll not figure out how to rewrite the select query
-			
-			/*Subject popularSubject = subjectDao.getMostPopularSubject();
-			
-			System.out.println(popularSubject.getName() + "|" + popularSubject.getDescription() );*/
+			System.out
+					.println("------------------------------------------------");
+			Subject subjectFindId = subjectDao.findById(Subject.class, 7);
+			try {
+				System.out.println("Subject number " + subjectFindId.getId()
+						+ " is " + subjectFindId.getName());
+			} catch (NullPointerException npe) {
+				System.out.println("No such subject");
+
+			}
+
+			System.out
+					.println("------------------------------------------------");
+			Subject popularSubject = subjectDao.getMostPopularSubject();
+
+			System.out.println("The most popular subject is: "
+					+ popularSubject.getName());
 
 			HibernateUtils.commitTransaction();
 
@@ -38,6 +51,5 @@ public class SubjectDaoTest {
 			HibernateUtils.closeSession();
 		}
 	}
-
 
 }

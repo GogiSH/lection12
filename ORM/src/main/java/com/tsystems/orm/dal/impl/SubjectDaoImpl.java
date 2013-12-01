@@ -18,16 +18,26 @@ public class SubjectDaoImpl extends GenericDaoImpl<Subject, Integer> implements
 
 	@Override
 	public Subject getMostPopularSubject() {
+		String select = "Select sub from Subject as sub , TeacherCourse as tc where sub.id = tc.subject.id and tc.course.id =(Select tc.course.id from TeacherCourse tc where tc.hours=(Select max(tc.hours) from TeacherCourse tc) )";
 		Query query = HibernateUtils
 				.getSession()
-				.createQuery(
-						"Select Distinct Subject.name,Subject.description "
-						+ "from Subject join Teacher_Course where subject.id = Teacher_Course.subject_id and"
-						+ " Teacher_Course.course_id =(Select course_id from Teacher_Course group by course_id "
-						+ "having count(Teacher_Course.course_id) = "
-						+ "(Select max(temp.num) num  from "
-						+ "(Select count(course_id) num from Teacher_Course group by course_id) temp))");
+				.createQuery(select);
 		return (Subject) query.uniqueResult();
+	}
+
+	@Override
+	public Subject getSubjectByID(int id) {
+		return findById(Subject.class, id);
+	}
+
+	public void createSubject(Subject subject) {
+		save(subject);
+	}
+
+	@Override
+	public void changeSubjectName(Subject subject, String name) {
+		subject.setName(name);
+		merge(subject);
 	}
 
 }
