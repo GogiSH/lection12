@@ -18,13 +18,13 @@ public class TeacherSavchenkoDaoImpl extends GenericDaoImpl<Teacher, Integer> im
 	}
 
 	@Override
-	public void createStudent(Teacher teacher) {
+	public void createTeacher(Teacher teacher) {
 		save(teacher);
 	}
 
 	@Override
 	public List<Teacher> findAllTeacher() {
-		return findAll(Student.class);
+		return findAll(Teacher.class);
 	}
 	
 	@Override
