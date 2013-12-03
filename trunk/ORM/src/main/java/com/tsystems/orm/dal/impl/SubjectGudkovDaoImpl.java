@@ -4,12 +4,12 @@ import java.util.List;
 
 import org.hibernate.Query;
 
-import com.tsystems.orm.dal.SubjectDao;
+import com.tsystems.orm.dal.SubjectGudkovDao;
 import com.tsystems.orm.entities.Subject;
 import com.tsystems.orm.util.HibernateUtils;
 
-public class SubjectDaoImpl extends GenericDaoImpl<Subject, Integer> implements
-		SubjectDao {
+public class SubjectGudkovDaoImpl extends GenericDaoImpl<Subject, Integer> implements
+		SubjectGudkovDao {
 
 	@Override
 	public List<Subject> getAllSubjects() {

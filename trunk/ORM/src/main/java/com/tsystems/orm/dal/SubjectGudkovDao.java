@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.tsystems.orm.entities.Subject;
 
-public interface SubjectDao extends GenericDao<Subject,Integer>{
+public interface SubjectGudkovDao extends GenericDao<Subject,Integer>{
 
 	public List<Subject> getAllSubjects();
 	public Subject getMostPopularSubject();
