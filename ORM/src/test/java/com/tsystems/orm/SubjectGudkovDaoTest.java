@@ -4,14 +4,14 @@ import java.util.List;
 
 import org.hibernate.HibernateException;
 
-import com.tsystems.orm.dal.SubjectDao;
-import com.tsystems.orm.dal.impl.SubjectDaoImpl;
+import com.tsystems.orm.dal.SubjectGudkovDao;
+import com.tsystems.orm.dal.impl.SubjectGudkovDaoImpl;
 import com.tsystems.orm.entities.Subject;
 import com.tsystems.orm.util.HibernateUtils;
 
-public class SubjectDaoTest {
+public class SubjectGudkovDaoTest {
 
-	private static SubjectDao subjectDao = new SubjectDaoImpl();
+	private static SubjectGudkovDao subjectDao = new SubjectGudkovDaoImpl();
 
 	public static void main(String... strings) {
 		try {

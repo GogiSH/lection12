@@ -14,7 +14,7 @@
   <!-- property name="hibernate.default_schema">bookstore</property -->
   <!--property name="dialect">org.hibernate.dialect.MySQLDialect</property -->
   
-  <property name="show_sql">true</property>
+  <property name="show_sql">false</property>
   
   <mapping class="com.tsystems.orm.entities.Course" />
   <mapping class="com.tsystems.orm.entities.Student" />
