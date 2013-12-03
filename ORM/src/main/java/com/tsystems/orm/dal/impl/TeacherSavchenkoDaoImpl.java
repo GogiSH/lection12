@@ -5,12 +5,12 @@ import java.util.List;
 
 import org.hibernate.Query;
 
-import com.tsystems.orm.dal.TeacherDao;
+import com.tsystems.orm.dal.impl.TeacherSavchenkoDao;
 import com.tsystems.orm.entities.Teacher;
 import com.tsystems.orm.util.HibernateUtils;
 
 
-public class TeacherSavchenkoDaoImpl extends GenericDaoImpl<Teacher, Integer> implements TeacherDao {
+public class TeacherSavchenkoDaoImpl extends GenericDaoImpl<Teacher, Integer> implements TeacherSavchenkoDao {
 	
 	@Override
 	public Teacher findTeacherById(Integer id) {
@@ -23,14 +23,14 @@ public class TeacherSavchenkoDaoImpl extends GenericDaoImpl<Teacher, Integer> im
 	}
 
 	@Override
-	public List<Teacher> getAllTeacher() {
+	public List<Teacher> findAllTeacher() {
 		return findAll(Student.class);
 	}
 	
 	@Override
 	public double getAverageExperience(int teacher_id)
 	{
-		Query query = HibernateUtils.getSession().createQuery("select avg(experience) from Teacher where teacher_id = :teacher_id");
+		Query query = HibernateUtils.getSession().createQuery("select avg(experience) from Teacher where id_ = :teacher_id");
 		query.setInteger("teacher_id", teacher_id);
 		return (double) query.uniqueResult();
 	}
