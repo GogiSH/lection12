@@ -34,5 +34,13 @@ public class TeacherSavchenkoDaoImpl extends GenericDaoImpl<Teacher, Integer> im
 		query.setInteger("teacher_id", teacher_id);
 		return (double) query.uniqueResult();
 	}
+	
+	@Override
+	public int getMoreExperienceTeacherID(){
+		Query query = HibernateUtils.getSession().createQuery("select t.id_ from teacher t where t.experience = (select MAX(experience) from teacher)");
+		return (double) query.uniqueResult();
+	}
+	
+	
 
 }
