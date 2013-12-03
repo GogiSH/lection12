@@ -28,10 +28,9 @@ public class TeacherSavchenkoDaoImpl extends GenericDaoImpl<Teacher, Integer> im
 	}
 	
 	@Override
-	public double getAverageExperience(int teacher_id)
+	public double getAverageExperience()
 	{
-		Query query = HibernateUtils.getSession().createQuery("select avg(experience) from Teacher where id_ = :teacher_id");
-		query.setInteger("teacher_id", teacher_id);
+		Query query = HibernateUtils.getSession().createQuery("select avg(experience) from Teacher");
 		return (double) query.uniqueResult();
 	}
 	
