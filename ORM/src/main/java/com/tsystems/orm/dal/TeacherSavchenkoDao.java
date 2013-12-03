@@ -9,6 +9,6 @@ public class TeacherSavchenkoDao extends GenericDao<Teacher, Integer>{
 	public Teacher findTeacherById(Integer id);
 	public void createTeacher(Teacher teacher);
 	public List<Teacher> findAllTeachers();
-	public double getAverageExperience(int teacher_id); 
+	public double getAverageExperience(); 
 	public int getMoreExperienceTeacherID();
 }
