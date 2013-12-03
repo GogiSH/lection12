@@ -23,7 +23,7 @@ public class TeacherSavchenkoDaoImpl extends GenericDaoImpl<Teacher, Integer> im
 	}
 
 	@Override
-	public List<Teacher> findAllTeacher() {
+	public List<Teacher> findAllTeachers() {
 		return findAll(Teacher.class);
 	}
 	
