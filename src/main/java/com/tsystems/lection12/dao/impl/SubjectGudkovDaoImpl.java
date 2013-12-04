@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.ejb.Remove;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -15,7 +16,7 @@ import com.tsystems.lection12.dao.SubjectGudkovDao;
 import com.tsystems.lection12.entities.Subject;
 
 
-
+@Stateless
 public class SubjectGudkovDaoImpl extends GenericDaoImpl<Subject, Integer> implements
 		SubjectGudkovDao {
 
