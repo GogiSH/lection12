@@ -98,7 +98,7 @@ public class UserService {
 	 * 
 	 * @param String email
 	 */
-    public void deleteUserById(String email) {
+    public void deleteUserByEmail(String email) {
     	userDao.deleteUserByEmail(email);
     }
 }
