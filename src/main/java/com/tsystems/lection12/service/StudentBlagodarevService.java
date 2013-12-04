@@ -34,8 +34,12 @@ public class StudentBlagodarevService {
 		studentDao.createStudent(student);
 	}
 	
-	public void deleteStudent(Student student){
-		studentDao.deleteStudent(student);		
+	public void deleteStudentById(Integer id){
+		studentDao.deleteStudentById(id);		
+	}
+	
+	public void deleteStudentByStudentNo(String studentNo){
+		studentDao.deleteStudentByStudentNo(studentNo);		
 	}
 	
 	public void setStudentNo(Student student, String studentNo){

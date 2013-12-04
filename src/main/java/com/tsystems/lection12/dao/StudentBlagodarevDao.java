@@ -9,7 +9,8 @@ import com.tsystems.lection12.entities.User;
 public interface StudentBlagodarevDao extends GenericDao<Student, Integer>  {
 	
 	void createStudent(Student student);
-	void deleteStudent(Student student);
+	void deleteStudentByStudentNo(String studentNo);
+	void deleteStudentById(Integer id);
 	void setStudentNo(Student student, String studentNo);
 	Student findStudentById(Integer id);
 	Student findStudentByStudentNo(String studentNo);
