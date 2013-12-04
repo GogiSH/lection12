@@ -42,7 +42,7 @@ public class Student implements java.io.Serializable {
 	}
 
 	@Id
-	@GeneratedValue(strategy = IDENTITY)
+//	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "ID", unique = true, nullable = false)
 	public Integer getId() {
 		return this.id;
@@ -62,7 +62,7 @@ public class Student implements java.io.Serializable {
 		this.user = user;
 	}
 
-	@Column(name = "STUDENT_NO", length = 64)
+	@Column(name = "STUDENT_NO", length = 64, unique = true)
 	public String getStudentNo() {
 		return this.studentNo;
 	}

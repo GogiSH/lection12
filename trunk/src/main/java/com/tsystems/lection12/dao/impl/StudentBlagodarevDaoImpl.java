@@ -17,7 +17,7 @@ import com.tsystems.lection12.entities.User;
 @Stateless
 public class StudentBlagodarevDaoImpl extends GenericDaoImpl<Student, Integer> implements StudentBlagodarevDao {
 
-	@PersistenceContext(name="lection12")
+	@PersistenceContext(unitName="lection12")
 	private EntityManager entityManager;
 	
 	@PostConstruct
@@ -36,11 +36,16 @@ public class StudentBlagodarevDaoImpl extends GenericDaoImpl<Student, Integer> i
 	public void createStudent(Student student) {
 		save(student);		
 	}
+	@Override
+	public void deleteStudentById(Integer id) {
+		Student student = findStudentById(id);
+		delete(student);
+	}
 
 	@Override
-	public void deleteStudent(Student student) {
+	public void deleteStudentByStudentNo(String studentNo) {
+		Student student = findStudentByStudentNo(studentNo);
 		delete(student);
-		
 	}
 
 	@Override
@@ -57,7 +62,7 @@ public class StudentBlagodarevDaoImpl extends GenericDaoImpl<Student, Integer> i
 	@Override
 	public Student findStudentByStudentNo(String studentNo) {
 		Query query = entityManager.createQuery("from Student where student_no = :studentNo");
-		query.setParameter("studentNO", studentNo);
+		query.setParameter("studentNo", studentNo);
 		return (Student) query.getSingleResult();
 	}
 
@@ -79,6 +84,8 @@ public class StudentBlagodarevDaoImpl extends GenericDaoImpl<Student, Integer> i
 	public List<Student> findAllStudents() {
 		return findAll(Student.class);
 	}
+
+
 	
 
 }
