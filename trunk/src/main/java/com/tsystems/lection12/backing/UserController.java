@@ -31,7 +31,7 @@ public class UserController {
 	public String testDeleteUser() {
 		System.out.println("----------------------------------------------------------");
 		System.out.println("Delete User item");
-		userService.deleteUserById(generateUser().getEmail());
+		userService.deleteUserByEmail(generateUser().getEmail());
 		System.out.println("----------------------------------------------------------");
 		return "";
 	}
