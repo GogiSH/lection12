@@ -37,9 +37,17 @@ public class SubjectGudkovController {
 		return "";
 	}
 	
+	public String testDeleteSubjectByDesc(){
+		System.out.println("----------------------------------------------------------");
+		System.out.println("Delete Subject item");
+		subjectService.deleteSubjectbyDesc(generateSubject().getDescription());
+		System.out.println("----------------------------------------------------------");
+		return "";
+	}
+	
 	public String testFindAllSubjects() {
 		System.out.println("----------------------------------------------------------");
-		System.out.println("Start Finding users");
+		System.out.println("Start Finding subjects");
 		List<Subject> subjects = (ArrayList<Subject>) subjectService.findAllSubjects();
 		for (Subject subject : subjects) {
 			System.out.println(subject.getName());
@@ -48,9 +56,19 @@ public class SubjectGudkovController {
 		return "";
 	}
 	
+	public String testSubjectByDesc() {
+		System.out.println("----------------------------------------------------------");
+		System.out.println("Start Finding subjects");
+		List<Subject> subjects = (ArrayList<Subject>) subjectService.getSubjectByDesc(generateSubject().getDescription());
+		for (Subject subject : subjects) {
+			System.out.println(subject.getName());
+		}
+		System.out.println("----------------------------------------------------------");
+		return "";
+	}
 	public String testFindSubjectById() {
 		System.out.println("----------------------------------------------------------");
-		System.out.println("Start Finding user by ID");
+		System.out.println("Start Finding subject by ID");
 		Subject subject = subjectService.findSubjectById(generateSubject().getId());
 		System.out.println(subject.getName());
 		System.out.println("----------------------------------------------------------");
@@ -59,7 +77,6 @@ public class SubjectGudkovController {
 	
 	private Subject generateSubject(){
 		Subject subject = new Subject();
-		subject.setId(11);
 		subject.setName("Some name");
 		subject.setDescription("Some desc");
 		return subject;

@@ -42,8 +42,16 @@ public class SubjectGudkovService {
 		subjectDao.deleteSubjectById(id);
 	}
 	
+	public void deleteSubjectbyDesc(String desc){
+		subjectDao.deleteSubjectByDesc(desc);
+	}
+	
 	public Subject findSubjectById(Integer id) {
 		return subjectDao.getSubjectByID(id);
+	}
+	
+	public List<Subject> getSubjectByDesc(String desc) {
+		return subjectDao.getSubjectByDesc(desc);
 	}
 
 	public List<Subject> findAllSubjects() {
