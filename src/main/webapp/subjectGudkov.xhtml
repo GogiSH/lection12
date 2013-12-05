@@ -11,11 +11,11 @@
             <h:commandButton id="create" value="Test Create new Subject in DB"
                 action="#{subjectGudkovController.testCreateUser}" />
             <h:commandButton id="delete" value="Test Delete Subject from DB"
-                action="#{subjectGudkovController.testDeleteSubject}" />
+                action="#{subjectGudkovController.testDeleteSubjectByDesc}" />
             <h:commandButton id="findSubjectss" value="Test Find all Subjects"
                 action="#{subjectGudkovController.testFindAllSubjects}" />
-            <h:commandButton id="findSubjectByID" value="Test Find by ID"
-                action="#{subjectGudkovController.testFindSubjectById}" />                                                              
+            <h:commandButton id="findSubjectByID" value="Test Find by Descriprion"
+                action="#{subjectGudkovController.testSubjectByDesc}" />                                                              
         </h:form>
     </ui:define>
 	</ui:composition>

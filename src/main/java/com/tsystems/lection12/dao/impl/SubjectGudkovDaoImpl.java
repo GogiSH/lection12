@@ -70,5 +70,23 @@ public class SubjectGudkovDaoImpl extends GenericDaoImpl<Subject, Integer> imple
 		
 	}
 
+	public void deleteSubjectByDesc(String desc) {
+		Query query =  entityManager.createQuery("from Subject sub where description=:desc");
+		query.setParameter("desc", desc);
+		List<Subject> list= query.getResultList();
+		for (Subject sb: list){
+			super.delete(sb);
+		}
+	
+		
+		
+	}
+
+	public List<Subject> getSubjectByDesc(String desc) {
+		Query query =  entityManager.createQuery("from Subject sub where description=:desc");
+		query.setParameter("desc", desc);
+		return  query.getResultList();
+	}
+
 
 }
