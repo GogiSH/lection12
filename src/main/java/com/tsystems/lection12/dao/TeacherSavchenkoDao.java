@@ -1,10 +1,9 @@
-package com.tsystems.orm.dal;
+package com.tsystems.lection12.dao;
 
 import java.util.List;
 
 import com.tsystems.lection12.entities.Teacher;
 import com.tsystems.lection12.entities.TeacherReview;
-import com.tsystems.lection12.entities.User;
 import com.tsystems.lection12.entities.TeacherCourse;
 
 public interface TeacherSavchenkoDao extends GenericDao<Teacher, Integer>{	
