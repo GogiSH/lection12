@@ -1,4 +1,4 @@
-package com.tsystems.orm.dal.impl;
+package com.tsystems.lection12.dao.impl;
 
 
 import java.util.List;
@@ -13,7 +13,6 @@ import javax.persistence.Query;
 import com.tsystems.lection12.dao.TeacherSavchenkoDao;
 import com.tsystems.lection12.entities.Teacher;
 import com.tsystems.lection12.entities.TeacherReview;
-import com.tsystems.lection12.entities.User;
 import com.tsystems.lection12.entities.TeacherCourse;
 
 @Stateless
