@@ -66,7 +66,6 @@ public class StudentBlagodarevController {
 	
 	private User generateUser(){
 		User user = new User();
-		user.setId(238);
 		user.setFirstName("L12UserSergey");
 		user.setLastName("L12UserBlagodarev");
 		user.setEmail("L12UserBlagodarev@gmail.com");
@@ -77,7 +76,6 @@ public class StudentBlagodarevController {
 	
 	private Student genenerateStudent(User user)	{
 		Student student = new Student();
-		student.setId(238);
 		student.setStudentNo("N238422");
 		student.setUser(user);
 		return student;
