@@ -34,12 +34,21 @@ public class StudentBlagodarevController {
 	}
 	
 	public String testDeleteStudent(){
-		System.out.println("----------------------------------------------------------");
-		User user = generateUser();
-		studentService.deleteStudentByStudentNo(genenerateStudent(user).getStudentNo());
-		userService.deleteUserByEmail(user.getEmail());
-		System.out.println("Delete Student item");
-		System.out.println("----------------------------------------------------------");
+		
+		try {
+
+			User user = generateUser();
+			studentService.deleteStudentByStudentNo(genenerateStudent(user)
+					.getStudentNo());
+			userService.deleteUserByEmail(user.getEmail());
+			System.out
+					.println("----------------------------------------------------------");
+			System.out.println("Delete Student item");
+			System.out
+					.println("----------------------------------------------------------");
+		} catch (javax.ejb.EJBTransactionRolledbackException ex) {
+			System.out.println(ex.getMessage());
+		}
 		return "";		
 	}
 	
@@ -56,11 +65,18 @@ public class StudentBlagodarevController {
 	}
 	
 	public String testFindStudentByStudentNo(){
-		System.out.println("----------------------------------------------------------");
+		try
+		{
+		
 		Student student = studentService.findStudentByStudentNo("N238422");
+		System.out.println("----------------------------------------------------------");
 		System.out.println("Find By StudentNo Student item");
 		System.out.println(student.getId() + " " + student.getUser().getId() + " " + student.getStudentNo());
 		System.out.println("----------------------------------------------------------");	
+		} catch (javax.ejb.EJBTransactionRolledbackException ex) {
+			System.out.println(ex.getMessage());
+		}
+		
 		return "";
 	}
 	
