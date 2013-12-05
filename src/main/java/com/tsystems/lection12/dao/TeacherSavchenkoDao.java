@@ -7,6 +7,7 @@ import com.tsystems.lection12.entities.TeacherReview;
 import com.tsystems.lection12.entities.TeacherCourse;
 
 public interface TeacherSavchenkoDao extends GenericDao<Teacher, Integer>{	
+	
 	public void createTeacher(Teacher teacher);
 	public void deleteTeacherById(Integer id);
 	public Teacher findTeacherById(Integer id);
