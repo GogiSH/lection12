@@ -6,7 +6,8 @@ import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.transaction.Transactional;
+
+import org.hibernate.HibernateException;
 
 import com.tsystems.lection12.entities.Student;
 import com.tsystems.lection12.entities.User;
@@ -24,12 +25,15 @@ public class StudentBlagodarevController {
 	private StudentBlagodarevService studentService;
 	
 	public String testCreateStudent(){
+		try {
+		User userFromDb = (User) userService.findUserByEmail("L12UserBlagodarev@gmail.com");
+		studentService.createStudent(genenerateStudent(userFromDb));
 		System.out.println("----------------------------------------------------------");
-		User user = generateUser();
-		userService.createUser(user);
-		studentService.createStudent(genenerateStudent(user));
 		System.out.println("Create new Student item");
 		System.out.println("----------------------------------------------------------");
+		} catch (HibernateException ex) {
+			System.out.println(ex.getMessage());			
+		}
 		return "";
 	}
 	
