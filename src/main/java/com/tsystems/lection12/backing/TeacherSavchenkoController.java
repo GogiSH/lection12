@@ -13,6 +13,7 @@ import com.tsystems.lection12.entities.Teacher;
 import com.tsystems.lection12.entities.TeacherCourse;
 import com.tsystems.lection12.entities.TeacherReview;
 import com.tsystems.lection12.service.TeacherSavchenkoService;
+import com.tsystems.lection12.service.UserService;
 
 
 @Named
@@ -20,20 +21,34 @@ import com.tsystems.lection12.service.TeacherSavchenkoService;
 public class TeacherSavchenkoController {
 
 	@Inject
+	private UserService userService;
+	@Inject
 	private TeacherSavchenkoService teacherService;
 	
 	public String testCreateTeacher(){
-		System.out.println("==========================================================");
-		System.out.println("Create new Teacher item");
-		teacherService.createTeacher(generateTeacher());
+		System.out.println("==========================================================");	
+		try {			
+			User userFromDB = (User) userService.findUserByEmail("L12UserSavchenko@gmail.com");
+			if (userFromDB == null){
+				User us = generateUser();
+				userService.createUser(us);
+				userFromDB = (User) userService.findUserByEmail("L12UserSavchenko@gmail.com");
+			}			
+			
+			teacherService.createTeacher(generateTeacher(userFromDB));
+			System.out.println("Create new Teacher item");
+		} catch (HibernateException ex) {
+			System.out.println(ex.getMessage());			
+		}
+		
 		System.out.println("==========================================================");
 		return "";
 	}
 	
 	public String testDeleteTeacher() {
-		System.out.println("==========================================================");
-		System.out.println("Teacher with ID = 1024 deleted");
+		System.out.println("==========================================================");		
 		teacherService.deleteTeacherById(1024);
+		System.out.println("Teacher with ID = 1024 deleted");
 		System.out.println("==========================================================");
 		return "";
 	}
@@ -70,14 +85,14 @@ public class TeacherSavchenkoController {
 		user.setId(512);
 		user.setFirstName("L12User_Name");
 		user.setLastName("L12User_Familiy");
-		user.setEmail("L12User_Teacher@gmail.com");
+		user.setEmail("L12UserSavchenko@gmail.com");
 		user.setPassword("password");
 		user.setBirthday(new Date());
 		return user;
 	}
 	
-	private Teacher generateTeacher(){
-		Teacher teacher = new Teacher(generateUser());
+	private Teacher generateTeacher(User user){
+		Teacher teacher = new Teacher(user);
 		teacher.setId(1024);
 		teacher.setExperience(10);
 		return teacher;
