@@ -46,9 +46,14 @@ public class TeacherSavchenkoController {
 	}
 	
 	public String testDeleteTeacher() {
-		System.out.println("==========================================================");		
-		teacherService.deleteTeacherById(1024);
-		System.out.println("Teacher with ID = 1024 deleted");
+		System.out.println("==========================================================");	
+		try {
+			teacherService.deleteTeacherById(1024);
+			System.out.println("Teacher with ID = 1024 deleted");
+		} catch (HibernateException ex) {
+			System.out.println(ex.getMessage());			
+		}
+		
 		System.out.println("==========================================================");
 		return "";
 	}
