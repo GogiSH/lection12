@@ -97,9 +97,10 @@ public class TeacherSavchenkoController {
 	}
 	
 	private Teacher generateTeacher(User user){
-		Teacher teacher = new Teacher(user);
+		Teacher teacher = new Teacher();
 		teacher.setId(1024);
 		teacher.setExperience(10);
+		teacher.setUser(user);
 		return teacher;
 	}
 }
