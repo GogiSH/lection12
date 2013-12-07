@@ -1,7 +1,7 @@
 
 import java.util.List;
 
-import com.tsystems.lection12.entities.Subject;
+import com.tsystems.lection12.entities.Course;
 
 public interface CourseDao extends GenericDao<Course, Integer> {
 	
