@@ -13,7 +13,7 @@ import com.tsystems.lection12.dao.CourseZyazinaDao;
 import com.tsystems.lection12.entities.Course;
 
 @Stateless
-public class CourseDaoImpl extends GenericDaoImpl<Course, Integer> implements CourseDao{
+public class CourseZyazinaDaoImpl extends GenericDaoImpl<Course, Integer> implements CourseZyazinaDao{
 	
 	@PersistenceContext(unitName="lection12")
 	private EntityManager entityManager;
