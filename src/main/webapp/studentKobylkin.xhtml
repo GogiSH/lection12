@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:composition template="template.xhtml">
+	    <ui:define name="content">
+        <h:messages />
+        <h:form id="studentForm">
+            <h:commandButton id="create" value="Test Create new Student in DB"
+                action="#{studentKobylkinController.testCreateStudent}" />
+            <h:commandButton id="delete" value="Test Delete Student from DB"
+                action="#{studentKobylkinController.testDeleteStudent}" />
+            <h:commandButton id="findStudents" value="Test Find all Students"
+                action="#{studentKobylkinController.testFindAllStudents}" />
+            <h:commandButton id="findGoodStudents" value="Test Find good Students id's"
+                action="#{studentKobylkinController.testFindGoodStudents}" />                                                            
+        </h:form>
+    </ui:define>
+	</ui:composition>
+</html>
