@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.tsystems.lection12.entities.Course;
 
-public interface CourseDao extends GenericDao<Course, Integer> {
+public interface CourseZyazinaDao extends GenericDao<Course, Integer> {
 	
 	public List<Course> getAllCourses();
 	public void deleteCourseById(Integer id);
