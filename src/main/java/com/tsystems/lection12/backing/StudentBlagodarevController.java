@@ -27,6 +27,11 @@ public class StudentBlagodarevController {
 	public String testCreateStudent(){
 		try {
 		User userFromDb = (User) userService.findUserByEmail("L12UserBlagodarev@gmail.com");
+		if (userFromDb == null){
+			User user = generateUser();
+			userService.createUser(user);
+			userFromDb = (User) userService.findUserByEmail("L12UserBlagodarev@gmail.com");
+		}		
 		studentService.createStudent(genenerateStudent(userFromDb));
 		System.out.println("----------------------------------------------------------");
 		System.out.println("Create new Student item");
