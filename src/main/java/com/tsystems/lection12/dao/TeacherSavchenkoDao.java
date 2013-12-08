@@ -16,4 +16,5 @@ public interface TeacherSavchenkoDao extends GenericDao<Teacher, Integer>{
 	public List<Teacher> getNotMoreExperienceTeachers();
 	public List<TeacherCourse> findTeacherCourses(Teacher teacher);
 	public List<TeacherReview> findTeacherReviews(Teacher teacher);
+	public List<Teacher> findTeacherByUserId(Integer user_id);
 }
