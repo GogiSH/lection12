@@ -46,9 +46,18 @@ public class TeacherSavchenkoDaoImpl extends GenericDaoImpl<Teacher, Integer> im
 		delete(teacher);
 	}
 	
+	
+	
 	@Override
 	public Teacher findTeacherById(Integer id) {
 		return (Teacher) findById(Teacher.class, id);
+	}
+	
+	@Override
+	public List<Teacher> findTeacherByUserId(Integer user_id) {
+		Query query = entityManager.createQuery("from TEACHER where USER_ID = :user_id");
+		query.setParameter("user_id", user_id);
+		return query.getResultList();
 	}
 
 	@Override

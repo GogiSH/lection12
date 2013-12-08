@@ -63,6 +63,10 @@ public class TeacherSavchenkoService {
 	public List<TeacherReview> findTeacherReviews(Teacher teacher){
 		return teacherDao.findTeacherReviews(teacher);
 	}
+	
+	public List<Teacher> findTeacherByUserId(Integer user_id){
+		return teacherDao.findTeacherByUserId(user_id);
+	}
     
 	
 }
