@@ -7,6 +7,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -48,9 +49,14 @@ public class UserDaoImpl extends GenericDaoImpl<User, Integer> implements UserDa
 
 	@Override
 	public User findUserByEmail(String email) {
-		Query query = entityManager.createQuery("from User where email = :email");
-		query.setParameter("email", email);
-		return (User) query.getSingleResult();
+		try {
+			Query query = entityManager.createQuery("from User where email = :email");
+			query.setParameter("email", email);
+			return (User) query.getSingleResult();
+		} catch (NoResultException ex) {
+			System.out.println("User was not found");
+			return null;
+		} 
 	}
 
 	@Override
