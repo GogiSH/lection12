@@ -64,9 +64,8 @@ public class TeacherSavchenkoService {
 		return teacherDao.findTeacherReviews(teacher);
 	}
 	
-	public List<Teacher> findTeacherByUserId(Integer user_id){
-		return teacherDao.findTeacherByUserId(user_id);
-	}
-    
+	public int deleteTeacherByUserId(Integer user_id){
+		return teacherDao.deleteTeacherByUserId(user_id);
+	}    
 	
 }

@@ -28,13 +28,14 @@ public class TeacherSavchenkoController {
 	
 	public String testCreateTeacher(){
 		System.out.println("==========================================================");	
-		try {
-			
-			User us = generateUser();
-			userService.createUser(us);
-			userFromDB = (User) userService.findUserByEmail("L12UserSavchenko@gmail.com");	
+		try {			
+			User userFromDB = (User) userService.findUserByEmail("L12UserSavchenko@gmail.com");
+			if (userFromDB == null){
+				User us = generateUser();
+				userService.createUser(us);
+				userFromDB = (User) userService.findUserByEmail("L12UserSavchenko@gmail.com");
+			}					
 			teacherService.createTeacher(generateTeacher(userFromDB));
-			
 			System.out.println("Create new Teacher");
 		} catch (HibernateException ex) {
 			System.out.println(ex.getMessage());			
@@ -47,13 +48,13 @@ public class TeacherSavchenkoController {
 	public String testDeleteTeacher() {
 		System.out.println("==========================================================");	
 		try {
-			
 			User userFromDB = (User) userService.findUserByEmail("L12UserSavchenko@gmail.com");
-			List<Teacher> teachers = teacherService.findTeacherByUserId(userFromDB.getId());			
-			teacherService.deleteTeacherById((teachers.get(0)).getId());
-			userService.deleteUserById(userFromDB.getId());
-			
-			System.out.println("Teacher deleted");
+			if (userFromDB == null){
+				System.out.println("==========================================================");
+				return "";
+			}
+			if ( teacherService.deleteTeacherByUserId(userFromDB.getId()) > 0 )
+			System.out.println("Teacher with USER_ID = "+userFromDB.getId()+" deleted");
 		} catch (HibernateException ex) {
 			System.out.println(ex.getMessage());			
 		}
