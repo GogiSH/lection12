@@ -56,7 +56,7 @@ public class TeacherSavchenkoController {
 			if ( teacherService.deleteTeacherByUserId(userFromDB.getId()) > 0 )
 				System.out.println("Teacher with USER_ID = "+userFromDB.getId()+" deleted");
 			else 
-				System.out.println("Teacher with USER_ID = "+userFromDB.getId()+" not found);
+				System.out.println("Teacher with USER_ID = "+userFromDB.getId()+" not found");
 		} catch (HibernateException ex) {
 			System.out.println(ex.getMessage());			
 		}
