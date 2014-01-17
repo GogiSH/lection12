@@ -53,7 +53,7 @@ public class TeacherSavchenkoDaoImpl extends GenericDaoImpl<Teacher, Integer> im
 		return (Teacher) findById(Teacher.class, id);
 	}
 	
-	@Override
+//	@Override
 	public int deleteTeacherByUserId(Integer user_id) {
 		Query query = entityManager.createQuery("delete from TEACHER where USER_ID = :user_id");
 		query.setParameter("user_id", user_id);
