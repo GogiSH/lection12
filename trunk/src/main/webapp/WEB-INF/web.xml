@@ -45,10 +45,10 @@
 	    <filter-name>LoginFilter</filter-name>
 	    <filter-class>com.tsystems.lection12.servlet.LoginFilter</filter-class>
 	</filter>
-	<filter-mapping>
+	<!-- filter-mapping>
 	    <filter-name>LoginFilter</filter-name>
 	    <url-pattern>/user.jsp</url-pattern>
-	</filter-mapping> 
+	</filter-mapping>  -->
 	
 	<filter-mapping>
 	    <filter-name>LoginFilter</filter-name>
