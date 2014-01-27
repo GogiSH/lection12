@@ -34,7 +34,7 @@ public class UserServlet extends HttpServlet {
 						"<body> " +
 							"<h1> User Page </h1> " +
 							"<br> " +
-							"<a href=\"/lection12/user.jsp\">Edit User table</a> " +
+							"<a href=\"./user.jsp\">Edit User table</a> " +
 							"<br> " +
 							"<table> ");
 		out.println(			"<tr> " +
@@ -88,7 +88,7 @@ public class UserServlet extends HttpServlet {
 		}
 		
 //		request.getRequestDispatcher("../user").forward(request, response);
-		response.sendRedirect("/lection12/user");
+//		response.sendRedirect("/lection12/user");
 	}
 
 }
