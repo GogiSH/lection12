@@ -53,6 +53,10 @@ public class SubjectGudkovService {
 	public List<Subject> getSubjectByDesc(String desc) {
 		return subjectDao.getSubjectByDesc(desc);
 	}
+	
+	public List<Subject> getSubjectByName(String name) {
+		return subjectDao.getSubjectByName(name);
+	}
 
 	public List<Subject> findAllSubjects() {
 		return subjectDao.findAll(Subject.class);
@@ -60,6 +64,13 @@ public class SubjectGudkovService {
 
 	public void changeSubjectName(Subject subject, String name) {
 		subjectDao.changeSubjectName(subject, name);
+	}
+	public void deleteSubjectbyName(String name){
+		subjectDao.deleteSubjectByName(name);
+	}
+	
+	public void changeSubjectDesc(Subject subject,String desc){
+		subjectDao.changeSubjectDesc(subject, desc);
 	}
 
 }
