@@ -12,8 +12,9 @@ public interface SubjectGudkovDao extends GenericDao<Subject, Integer> {
 	public List<Subject> getSubjectByDesc(String desc);
 	public Subject getSubjectByID(int id);
 	public void deleteSubjectByDesc(String desc);
+	public void deleteSubjectByName(String name);
 	public void createSubject(Subject subject);
-
+	public void changeSubjectDesc(Subject subject, String desc);
 	public void changeSubjectName(Subject subject, String name);
-
+	public List<Subject> getSubjectByName(String name);
 }

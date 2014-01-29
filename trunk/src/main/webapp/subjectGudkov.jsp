@@ -8,19 +8,24 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table border="1">
-		<tr>
-			<th>Subject description</th>
-			<th>Subject Name</th>
-		</tr>
-		<c:forEach items="${subjects}" var="subject">
+	<form action="" method="post">
+		<table border="1">
 			<tr>
-				<td><c:out value="${subject.description}" /></td>
-				<td><c:out value="${subject.name}" /></td>
+				<th>Subject description</th>
+				<th>Subject Name</th>
+				<th>Delete subject </th>
+				<th>Edit subject</th>
 			</tr>
-		</c:forEach>
-	</table>
-	
-	<h1>Edit will be added soon...</h1>
+			<c:forEach items="${subjects}" var="subject">
+				<tr>
+					<td><input type="text" name="description/${subjects.indexOf(subject)}" value="${subject.description}"/></td>
+					<td><input type="text" name="name/${subjects.indexOf(subject)}" value="${subject.name}" /></td>
+					<td><input type="submit" name="action/delete/${subjects.indexOf(subject)}" value="delete"></td>
+					<td><input type="submit" name="action/edit/${subjects.indexOf(subject)}" value="edit"></td>
+				</tr>
+				<input type="hidden" name="myObject" value="${subject.id}" />
+			</c:forEach>
+		</table>
+	</form>
 </body>
 </html>
