@@ -57,6 +57,10 @@ public class SubjectGudkovService {
 	public List<Subject> getSubjectByName(String name) {
 		return subjectDao.getSubjectByName(name);
 	}
+	
+	public Subject getSubjectById(Integer id) {
+		return subjectDao.getSubjectByID(id);
+	}
 
 	public List<Subject> findAllSubjects() {
 		return subjectDao.findAll(Subject.class);
