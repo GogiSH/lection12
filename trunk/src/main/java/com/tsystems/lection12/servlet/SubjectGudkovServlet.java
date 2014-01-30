@@ -2,7 +2,7 @@ package com.tsystems.lection12.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Date;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.tsystems.lection12.entities.Subject;
-import com.tsystems.lection12.entities.User;
 import com.tsystems.lection12.service.SubjectGudkovService;
 
 @WebServlet(urlPatterns = { "/subjectGudkov" })
@@ -35,18 +34,6 @@ public class SubjectGudkovServlet extends HttpServlet {
 			RequestDispatcher rd = context
 					.getRequestDispatcher("/subjectGudkov.jsp");
 			rd.forward(request, response);
-
-			/*
-			 * out.println("<html> " + "<body> " + "<table> "); out.println(
-			 * "<tr> " + "<th>Subject description</th> " +
-			 * "<th>Subject Name</th> " +
-			 * 
-			 * "</tr>"); for(Subject subject : subjects){ out.println( "<tr> " +
-			 * "<td> " + subject.getDescription() + " </td> " + "<td> " +
-			 * subject.getName() + " </td> " + "</tr>"); }
-			 * 
-			 * out.println( "</table> " + "</body> " + "</html>");
-			 */
 		}
 	}
 
@@ -56,17 +43,14 @@ public class SubjectGudkovServlet extends HttpServlet {
 		if (request.getParameter("action") != null) {
 			String action = request.getParameter("action").toUpperCase();
 			String[] actionTypes = action.split("/");
-
-			int subjectIdFake = Integer.parseInt(actionTypes[2]);
-			String actionType = actionTypes[1];
-			String name = request.getParameter("name" + subjectIdFake);
-			String desc = request.getParameter("description" + subjectIdFake);
+			String actionType = actionTypes[0];
 
 			if (actionType.startsWith("DELETE")) {
-				System.out.println("delete reached "+name+desc );
 
-				subjectService.deleteSubjectbyName(name);
-				
+				Integer subjectId = Integer.valueOf(actionTypes[1]);
+
+				subjectService.deleteSubjectbyId(subjectId);
+
 				List<Subject> subjects = subjectService.findAllSubjects();
 				if (subjects != null) {
 					request.setAttribute("subjects", subjects);
@@ -80,13 +64,14 @@ public class SubjectGudkovServlet extends HttpServlet {
 
 			if (actionType.startsWith("EDIT")) {
 
-				List<Subject> list = subjectService.getSubjectByName(name);
-				System.out.println("edit reached "+name+desc );
-				for (Subject subject:list){
-					System.out.println(subject);
-					subjectService.changeSubjectDesc(subject, desc);
-				}
-				
+				Integer subjectId = Integer.valueOf(actionTypes[1]);
+				String name = request.getParameter("name/" + subjectId);
+				String desc = request.getParameter("description/" + subjectId);
+
+				Subject subject = subjectService.getSubjectById(subjectId);
+				subjectService.changeSubjectName(subject, name);
+				subjectService.changeSubjectDesc(subject, desc);
+
 				List<Subject> subjects = subjectService.findAllSubjects();
 				if (subjects != null) {
 					request.setAttribute("subjects", subjects);
@@ -98,6 +83,30 @@ public class SubjectGudkovServlet extends HttpServlet {
 				}
 			}
 
+			if (actionType.startsWith("ADD")) {
+
+				String name = request.getParameter("name");
+				String desc = request.getParameter("description");
+				Subject subject = new Subject();
+				subject.setName(name);
+				subject.setDescription(desc);
+				try {
+					subjectService.createSubject(subject);
+				}
+				catch(Exception Ex){
+					
+				}
+
+				List<Subject> subjects = subjectService.findAllSubjects();
+				if (subjects != null) {
+					request.setAttribute("subjects", subjects);
+					ServletContext context = getServletContext();
+					RequestDispatcher rd = context
+							.getRequestDispatcher("/subjectGudkov.jsp");
+					rd.forward(request, response);
+
+				}
+			}
 		}
 
 	}
