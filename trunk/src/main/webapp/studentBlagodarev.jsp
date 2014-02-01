@@ -12,21 +12,24 @@
 	<form action="./studentBlagodarev" method="POST">
 		<table border="1">
 			<tr>
-				<th colspan="2">StudentNo</th>
+				<th colspan="3">StudentNo</th>
 			<tr>
-				<td colspan="2"><input type="text" name="studentNo"	value="${student.studentNo}" /></td>
+				<td colspan="3"><input type="text" name="studentNo"	value="${student.studentNo}" /></td>
 			</tr>
 			<tr>
-				<th colspan="2">StudentNo</th>
+				<th>Student id</th>
+				<th>Student NO</th>
+				<th>User email</th>
 			</tr>
 			<c:forEach items="${students}" var="student">
 				<tr>
 					<td>${student.id}</td>
 					<td>${student.studentNo}</td>
+					<td>${student.user.email}</td>
 				</tr>
 			</c:forEach>
 			<tr>
-				<td colspan="2">
+				<td colspan="3">
 					<input type="submit" name="action" value="Add" />
 					<input type="submit" name="action" value="Delete" /> 
 					<input type="submit" name="action" value="Search" />
