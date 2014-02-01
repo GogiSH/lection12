@@ -63,7 +63,6 @@ public class StudentBlagodarevServlet extends HttpServlet {
 
 				student.setStudentNo(request.getParameter("studentNo"));
 				
-			
 				studentService.createStudent(student);
 				refresh(request, response);
 				break;
@@ -84,8 +83,7 @@ public class StudentBlagodarevServlet extends HttpServlet {
 	private void refresh(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		studentService.findAllStudents();
-		List<Student> students = (ArrayList<Student>) studentService
-				.findAllStudents();
+		List<Student> students = (ArrayList<Student>) studentService.findAllStudents();
 		request.setAttribute("students", students);
 		ServletContext context = getServletContext();
 		RequestDispatcher reDispatcher = context
