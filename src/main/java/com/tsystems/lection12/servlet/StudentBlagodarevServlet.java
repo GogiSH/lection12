@@ -54,22 +54,21 @@ public class StudentBlagodarevServlet extends HttpServlet {
 
 			switch (actionType) {
 			case ADD:
-				User dummyUser = userService
-						.findUserByEmail("JSP Blagodarev@gmail.com");
-				Student student = new Student(dummyUser);
-
-				student.setId(Integer.decode(request.getParameter("studentId")));
-				student.setStudentNo(request.getParameter("studentNo"));
-
+				User dummyUser = userService.findUserByEmail("JSP Blagodarev@gmail.com");
 				if (dummyUser == null) {
 					dummyUser = generateUser();
+					userService.createUser(dummyUser);
 				}
+				Student student = new Student(dummyUser);
+
+				student.setStudentNo(request.getParameter("studentNo"));
+				
+			
 				studentService.createStudent(student);
 				refresh(request, response);
 				break;
 			case DELETE:
 				String studentNo = request.getParameter("studentNo");
-				userService.deleteUserByEmail("JSP Blagodarev@gmail.com");
 				studentService.deleteStudentByStudentNo(studentNo);
 				refresh(request, response);
 				break;
