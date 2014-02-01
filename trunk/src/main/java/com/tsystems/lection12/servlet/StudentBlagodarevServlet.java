@@ -33,7 +33,6 @@ public class StudentBlagodarevServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 		response.setContentType("test/html");
-		PrintWriter out = response.getWriter();
 
 		List<Student> students = (ArrayList<Student>) studentService
 				.findAllStudents();
