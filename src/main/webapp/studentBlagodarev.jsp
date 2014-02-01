@@ -8,19 +8,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>StudentBlagodarevPage</h1>
+	<h1>Student Blagodarev Page</h1>
 	<form action="./studentBlagodarev" method="POST">
 		<table border="1">
 			<tr>
-				<th>StudentId</th>
-				<th>StudentNo</th>
+				<th colspan="2">StudentNo</th>
 			<tr>
-				<td><input type="text" name="studentId" value="${student.id}" /></td>
-				<td><input type="text" name="studentNo"	value="${student.studentNo}" /></td>
+				<td colspan="2"><input type="text" name="studentNo"	value="${student.studentNo}" /></td>
 			</tr>
 			<tr>
-				<th>StudentId</th>
-				<th>StudentNo</th>
+				<th colspan="2">StudentNo</th>
 			</tr>
 			<c:forEach items="${students}" var="student">
 				<tr>
